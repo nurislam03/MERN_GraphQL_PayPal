@@ -1,0 +1,32 @@
+{
+  "name": "mern_graphql_paypal",
+  "version": "1.0.0",
+  "description": "A simple project using MERN stack with GraphQL. Aimed to explore PayPal integration as a payment method.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nurislam03/MERN_GraphQL_PayPal.git"
+  },
+  "author": "Nur Islam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nurislam03/MERN_GraphQL_PayPal/issues"
+  },
+  "homepage": "https://github.com/nurislam03/MERN_GraphQL_PayPal#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dataloader": "^2.0.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
