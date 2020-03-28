@@ -4,6 +4,8 @@
   "description": "A simple project using MERN stack with GraphQL. Aimed to explore PayPal integration as a payment method.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "app": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

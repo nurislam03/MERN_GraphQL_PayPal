@@ -1,0 +1,4 @@
+{
+    "mongoURI":
+      "mongodb+srv://MernGraphQL:MernGraphQL123@merngraphql-mof32.mongodb.net/paypal?retryWrites=true&w=majority"
+  }
