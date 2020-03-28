@@ -6,14 +6,14 @@ const graphQlSchema = require('./graphql/schema/index');
 const graphQlResolvers = require('./graphql/resolvers/index');
 
 const connectDB = require('./config/db');
-// const isAuth = require('./middleware/is-auth');
+const isAuth = require('./middleware/is-auth');
 
 
 const app = express();
 
 app.use(bodyParser.json());
 
-// app.use(isAuth);
+app.use(isAuth);
 
 app.use(
     '/graphql',
