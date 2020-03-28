@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "app": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run app\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +23,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
     "config": "^3.3.1",
     "dataloader": "^2.0.0",
     "express": "^4.17.1",
