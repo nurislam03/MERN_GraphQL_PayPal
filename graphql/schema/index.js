@@ -11,6 +11,7 @@ type Product {
 type User {
   _id: ID!
   name: String!
+  role: String!
   email: String!
   password: String
 }
@@ -26,6 +27,7 @@ input ProductInput {
 }
 input UserInput {
   name: String!
+  role: String!
   email: String!
   password: String!
 }

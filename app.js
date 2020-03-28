@@ -13,7 +13,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use(isAuth);
+// app.use(isAuth);
 
 app.use(
     '/graphql',
