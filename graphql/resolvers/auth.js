@@ -13,7 +13,6 @@ module.exports = {
       const hashedPassword = await bcrypt.hash(args.userInput.password, 12);
 
       const user = new User({
-        name: args.userInput.name,
         role: args.userInput.role,
         email: args.userInput.email,
         password: hashedPassword
@@ -39,7 +38,6 @@ module.exports = {
     }
     const token = jwt.sign(
       {
-        name: user.name,
         role: user.role,
         userId: user.id,
         email: user.email
