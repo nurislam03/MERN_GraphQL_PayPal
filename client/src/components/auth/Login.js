@@ -10,6 +10,7 @@ class AuthPage extends Component {
 
   static contextType = AuthContext;
 
+
   constructor(props) {
     super(props);
     this.emailEl = React.createRef();
@@ -36,6 +37,7 @@ class AuthPage extends Component {
           query {
             login(email: "${email}", password: "${password}") {
               userId
+              userRole
               token
               tokenExpiration
             }
@@ -57,11 +59,13 @@ class AuthPage extends Component {
         return res.json();
       })
       .then(resData => {
+        // console.log(resData.data.login.token.role);
         console.log(resData);
         if (resData.data.login.token) {
           this.context.login(
             resData.data.login.token,
             resData.data.login.userId,
+            resData.data.login.userRole,
             resData.data.login.tokenExpiration
           );
         }
