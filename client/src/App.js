@@ -9,6 +9,10 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 // import MainNavigation from './components/layout/MainNavigation';
 import Navbar from './components/layout/Navbar';
+import ProductsPage from './components/products/ProductsPage';
+import CreateProduct from './components/create-product/CreateProduct';
+import ShowProducts from './components/show-products/ShowProducts';
+
 
 class App extends Component {
   state = {
@@ -39,15 +43,21 @@ class App extends Component {
             <Navbar />
             <main className="main-content">
               <Switch>
-                {!this.state.token && <Redirect from="/" to="/register" exact />}
                 {this.state.token && <Redirect from="/" to="/products" exact />}
+
+
                 {this.state.token && <Redirect from="/register" to="/products" exact />}
                 {this.state.token && <Redirect from="/login" to="/products" exact />}
 
+                {!this.state.token && <Redirect from="/" to="/register" exact />}
                 {!this.state.token && (<Route path="/register" component={Register} />)}
                 {!this.state.token && (<Route path="/login" component={Login} />)}
 
-                <Route path="/products" component={null} />
+                {!this.state.token && <Redirect from="/create-product" to="/register" exact />}
+                {this.state.token && (<Route path="/create-product" component={CreateProduct} />)}
+
+                <Route path="/products" component={ShowProducts} />
+                {!this.state.token && <Redirect to="/register" exact />}
               </Switch>
             </main>
           </AuthContext.Provider>
