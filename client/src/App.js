@@ -9,7 +9,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 // import MainNavigation from './components/layout/MainNavigation';
 import Navbar from './components/layout/Navbar';
-import ProductsPage from './components/products/ProductsPage';
+// import ProductsPage from './components/products/ProductsPage';
 import CreateProduct from './components/create-product/CreateProduct';
 import ShowProducts from './components/show-products/ShowProducts';
 
@@ -17,15 +17,16 @@ import ShowProducts from './components/show-products/ShowProducts';
 class App extends Component {
   state = {
     token: null,
-    userId: null
+    userId: null,
+    userRole: null,
   };
 
-  login = (token, userId, tokenExpiration) => {
-    this.setState({ token: token, userId: userId });
+  login = (token, userId, userRole, tokenExpiration) => {
+    this.setState({ token: token, userId: userId, userRole: userRole });
   };
 
   logout = () => {
-    this.setState({ token: null, userId: null });
+    this.setState({ token: null, userId: null, userRole: null });
   };
 
   render() {
@@ -36,6 +37,7 @@ class App extends Component {
             value={{
               token: this.state.token,
               userId: this.state.userId,
+              userRole: this.state.userRole,
               login: this.login,
               logout: this.logout
             }}
@@ -53,8 +55,8 @@ class App extends Component {
                 {!this.state.token && (<Route path="/register" component={Register} />)}
                 {!this.state.token && (<Route path="/login" component={Login} />)}
 
-                {!this.state.token && <Redirect from="/create-product" to="/register" exact />}
-                {this.state.token && (<Route path="/create-product" component={CreateProduct} />)}
+                {(!this.state.token || this.state.userRole !== "Business") && <Redirect from="/create-product" to="/register" exact />}
+                {(this.state.token && this.state.userRole === 'Business') && (<Route path="/create-product" component={CreateProduct} />)}
 
                 <Route path="/products" component={ShowProducts} />
                 {!this.state.token && <Redirect to="/register" exact />}

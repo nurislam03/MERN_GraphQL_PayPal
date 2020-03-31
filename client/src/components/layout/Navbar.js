@@ -64,30 +64,36 @@ const Navbar = props => (
                     Products
                   </Link>
                 </li>
-              </ul>
-
-              {context.token && (
+                {(context.token && context.userRole === "Business") && (
                 <React.Fragment>
-                  <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
                       <Link className="nav-link" to="/create-product">
                         Create Product
                       </Link>
                     </li>
+                </React.Fragment>
+                )}
+              </ul>
+
+
+
+              {context.token && (
+                <React.Fragment>
+                  <ul className="navbar-nav ml-auto">
+                    {/* <li className="nav-item">
+                      <Link className="nav-link" to="/create-product">
+                        Create Product
+                      </Link>
+                    </li> */}
                     <li className="nav-item">
                       <Link className="nav-link" to="/dashboard">
                         Dashboard
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <a
-                        href=""
-                        // onClick={this.onLogoutClick.bind(this)}
-                        onClick={context.logout}
-                        className="nav-link"
-                      >
+                      <Link className="nav-link" onClick={context.logout}>
                         Logout
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </React.Fragment>
