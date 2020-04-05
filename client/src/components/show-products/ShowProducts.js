@@ -7,15 +7,63 @@ class ShowProducts extends Component {
     state = {
       products: [],
       isLoading: false,
-      selectedProduct: null
+      isLoadingPCnl: false,
+      selectedProduct: null,
+      paymentChannel: null
     };
     // isActive = true;
 
   static contextType = AuthContext;
 
   componentDidMount() {
+    // this.fetchPaymentChannel();
     this.fetchProducts();
   }
+
+  // fetchPaymentChannel() {
+  //   this.setState({ isLoading: true });
+  //   const userId = this.context.userId;
+
+  //   const requestBody = {
+  //     query: `
+  //       query {
+  //         paymentChannel(userId: "${userId}") {
+  //           _id
+  //           sandbox
+  //           user {
+  //             _id
+  //           }
+  //         }
+  //       }
+  //     `
+  //   };
+
+  //   const token = this.context.token;
+
+  //   fetch('http://localhost:8082/graphql', {
+  //     method: 'POST',
+  //     body: JSON.stringify(requestBody),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: 'Bearer ' + token
+  //     }
+  //   })
+  //     .then(res => {
+  //       if (res.status !== 200 && res.status !== 201) {
+  //         throw new Error('Failed!');
+  //       }
+  //       return res.json();
+  //     })
+  //     .then(resData => {
+  //       const paymentChannel = resData.data.paymentChannel;
+  //       console.log(paymentChannel);
+  //       this.setState({ paymentChannel: paymentChannel, isLoading: false });
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //       this.setState({ isLoading: false });
+  //     });
+  // }
 
 //   constructor(props) {
 //     super(props);
@@ -61,6 +109,7 @@ fetchProducts() {
       })
       .then(resData => {
         const products = resData.data.products;
+        console.log(products);
         this.setState({ products: products, isLoading: false });
       })
       .catch(err => {
@@ -89,7 +138,13 @@ fetchProducts() {
                             {/* return ( */}
                                 <React.Fragment>
                                     {this.state.products.map((product, index) => (
-                                        <ProductCard key={index} product={product} />
+                                        <ProductCard
+                                          key={index}
+                                          product={product}
+                                          authUserId={this.context.userId}
+                                          authUserRole={this.context.userRole}
+                                          paymentChannel={this.state.paymentChannel}
+                                        />
                                     ))}
                                 </React.Fragment>
                             {/* ); */}

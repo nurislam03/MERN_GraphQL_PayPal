@@ -77,6 +77,8 @@ const Navbar = props => (
 
 
 
+
+
               {context.token && (
                 <React.Fragment>
                   <ul className="navbar-nav ml-auto">
@@ -85,11 +87,20 @@ const Navbar = props => (
                         Create Product
                       </Link>
                     </li> */}
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/dashboard">
-                        Dashboard
+                    {(context.token && context.userRole === "Business") && (
+                      <React.Fragment>
+                            <li className="nav-item">
+                              <Link className="nav-link" to="/create-channel">
+                                + Connect PayPal
+                              </Link>
+                            </li>
+                      </React.Fragment>
+                    )}
+                    {/* <li className="nav-item">
+                      <Link className="nav-link" to="/create-channel">
+                        +Add Paypal
                       </Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                       <Link className="nav-link" onClick={context.logout}>
                         Logout

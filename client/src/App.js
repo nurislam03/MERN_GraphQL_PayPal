@@ -12,6 +12,8 @@ import Navbar from './components/layout/Navbar';
 // import ProductsPage from './components/products/ProductsPage';
 import CreateProduct from './components/create-product/CreateProduct';
 import ShowProducts from './components/show-products/ShowProducts';
+import CreateChannel from './components/create-channel/CreateChannel';
+
 
 
 class App extends Component {
@@ -57,6 +59,8 @@ class App extends Component {
 
                 {(!this.state.token || this.state.userRole !== "Business") && <Redirect from="/create-product" to="/register" exact />}
                 {(this.state.token && this.state.userRole === 'Business') && (<Route path="/create-product" component={CreateProduct} />)}
+
+                {(this.state.token && this.state.userRole === 'Business') && (<Route path="/create-channel" component={CreateChannel} />)}
 
                 <Route path="/products" component={ShowProducts} />
                 {!this.state.token && <Redirect to="/register" exact />}

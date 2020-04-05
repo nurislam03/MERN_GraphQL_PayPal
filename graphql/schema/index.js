@@ -20,6 +20,11 @@ type AuthData {
   token: String!
   tokenExpiration: Int!
 }
+type PaymentChannel {
+  _id: ID!
+  user: User!
+  sandbox: String!
+}
 input ProductInput {
   title: String!
   price: Float!
@@ -30,13 +35,18 @@ input UserInput {
   email: String!
   password: String!
 }
+input PaymentChannelInput {
+  sandbox: String!
+}
 type RootQuery {
     products: [Product!]!
     login(email: String!, password: String!): AuthData!
+    paymentChannel(userId: ID!): PaymentChannel!
 }
 type RootMutation {
     createProduct(productInput: ProductInput): Product
     createUser(userInput: UserInput): User
+    createPaymentChannel(paymentChannelInput: PaymentChannelInput): PaymentChannel
 }
 schema {
     query: RootQuery

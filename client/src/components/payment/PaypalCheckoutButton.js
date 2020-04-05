@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom';
 import paypal from 'paypal-checkout';
 
 
-const PaypalCheckoutButton = ({ order }) => {
+const PaypalCheckoutButton = ({ order, pcnl }) => {
+  let sandboxLink;
+  if (pcnl.sandbox) {
+    sandboxLink = pcnl.sandbox;
+  } else {
+    sandboxLink = "AVV1zidI1RtZvVlvzDASYSBFUPcLxOjUXw7WwZyZlvLyodbuFmELZ_e55GDO9F1j-9dBM-oycPld-Bap"
+  }
 
   const paypalConf = {
     currency: 'USD',
     env: 'sandbox',
     client: {
-      sandbox: 'AVV1zidI1RtZvVlvzDASYSBFUPcLxOjUXw7WwZyZlvLyodbuFmELZ_e55GDO9F1j-9dBM-oycPld-Bap',
+      sandbox: sandboxLink,
       production: '--',
     },
     style: {
