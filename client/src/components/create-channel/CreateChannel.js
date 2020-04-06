@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthContext from '../../context/auth-context';
+import { Link } from 'react-router-dom';
 
 class CreateChannel extends Component {
     state = {
@@ -93,9 +94,11 @@ class CreateChannel extends Component {
                            />
                         </div>
 
-                        <div className="form-actions">
-                          <button type="submit" className="btn btn-dark btn-block mt-4">Submit</button>
-                        </div>
+                        <Link className="nav-link" to="/">
+                          <div className="form-actions">
+                            <button type="submit" className="btn btn-dark btn-block mt-4">Submit</button>
+                          </div>
+                        </Link>
 
                       </form>
                     </div>

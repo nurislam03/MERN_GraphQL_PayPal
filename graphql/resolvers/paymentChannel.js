@@ -8,7 +8,7 @@ module.exports = {
     }
     try {
       const result = await PaymentChannel.findOne({ user: req.userId });
-      console.log(result);
+      console.log("paymentChannelBackend: " + result);
         return result;
     } catch (err) {
         throw err;

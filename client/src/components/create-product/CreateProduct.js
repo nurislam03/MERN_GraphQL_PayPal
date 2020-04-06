@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthContext from '../../context/auth-context';
 
+
 class CreateProduct extends Component {
     state = {
       creating: false,
@@ -16,10 +17,6 @@ class CreateProduct extends Component {
     this.priceElRef = React.createRef();
     this.dateElRef = React.createRef();
   }
-
-//   switchModeHandler = () => {
-//     this.setState({ creating: true });
-//   };
 
   submitHandler = event => {
     event.preventDefault();
@@ -66,19 +63,6 @@ class CreateProduct extends Component {
         return res.json();
       })
       .then(resData => {
-        // this.setState(prevState => {
-        //   const updatedProducts = [...prevState.products];
-        //   updatedProducts.push({
-        //     _id: resData.data.createProduct._id,
-        //     title: resData.data.createProduct.title,
-        //     date: resData.data.createProduct.date,
-        //     price: resData.data.createProduct.price,
-        //     creator: {
-        //       _id: this.context.userId
-        //     }
-        //   });
-        //   return { products: updatedProducts };
-        // });
         console.log(resData);
         return resData
       })
@@ -131,7 +115,7 @@ class CreateProduct extends Component {
                         </div>
 
                         <div className="form-actions">
-                          <button type="submit" className="btn btn-dark btn-block mt-4">Submit</button>
+                            <button type="submit" className="btn btn-dark btn-block mt-4">Submit</button>
                         </div>
 
                       </form>

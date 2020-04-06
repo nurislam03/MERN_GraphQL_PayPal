@@ -9,25 +9,32 @@ class ShowProducts extends Component {
       isLoading: false,
       isLoadingPCnl: false,
       selectedProduct: null,
-      paymentChannel: null
+      // paymentChannel: null
     };
     // isActive = true;
 
   static contextType = AuthContext;
 
   componentDidMount() {
-    // this.fetchPaymentChannel();
     this.fetchProducts();
+    // this.fetchPaymentChannel();
+
+    // {this.state.products.map((product, index) => (
+
+    // ))}
   }
+
+
+//////////////////////////////////////////////
 
   // fetchPaymentChannel() {
   //   this.setState({ isLoading: true });
-  //   const userId = this.context.userId;
+  //   // const userId = this.context.userId;
 
   //   const requestBody = {
   //     query: `
   //       query {
-  //         paymentChannel(userId: "${userId}") {
+  //         paymentChannel(userId: "${id}") {
   //           _id
   //           sandbox
   //           user {
@@ -65,16 +72,19 @@ class ShowProducts extends Component {
   //     });
   // }
 
-//   constructor(props) {
-//     super(props);
-//     this.titleElRef = React.createRef();
-//     this.priceElRef = React.createRef();
-//     this.dateElRef = React.createRef();
-//   }
+/////////////////////////////////////////////
 
-//   switchModeHandler = () => {
-//     this.setState({ creating: true });
-//   };
+
+  constructor(props) {
+    super(props);
+    this.titleElRef = React.createRef();
+    this.priceElRef = React.createRef();
+    this.dateElRef = React.createRef();
+  }
+
+  switchModeHandler = () => {
+    this.setState({ creating: true });
+  };
 
 fetchProducts() {
     this.setState({ isLoading: true });
@@ -143,7 +153,8 @@ fetchProducts() {
                                           product={product}
                                           authUserId={this.context.userId}
                                           authUserRole={this.context.userRole}
-                                          paymentChannel={this.state.paymentChannel}
+                                          // paymentChannel={this.state.paymentChannel}
+                                          // paymentChannel={this.fetchPaymentChannel(product.creator._id)}
                                         />
                                     ))}
                                 </React.Fragment>
